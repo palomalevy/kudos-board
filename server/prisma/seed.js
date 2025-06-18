@@ -10,12 +10,19 @@ async function main() {
     { coverImage: 'parrot', title: 'Inspiration', category: 'Inspiration' },
     { coverImage: 'dog', title: 'Inspiration', category: 'Inspiration' },
   ]
+  const cardData = [
+    { title: 'Congrats', description: 'Good job', coverImage: 'idk', author: 'Me' },
+    { title: 'Congrats1', description: 'Testing', coverImage: 'idk', author: 'Me1' }
+  ]
 
   for (const board of boardData) {
     await prisma.board.create({ data: board })
   }
+  for (const card of cardData) {
+    await prisma.card.create({ data: card })
+  }
 
-  console.log('Seeded boardData!')
+  console.log('Seeded board and card data :)')
 }
 
 main()
