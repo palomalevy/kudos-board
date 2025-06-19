@@ -4,13 +4,13 @@ const prisma = new PrismaClient()
 
 module.exports = {
   async find(where) {
-    const cards = await prisma.board.findMany({ where: where })
+    const cards = await prisma.card.findMany({ where: where })
     return cards
   },
 
   async findById(id) {
     // SELECT * FROM "Board" WHERE id = 1;
-    const card = await prisma.card.findUnique({ where: { id } })
+    const card = await prisma.card.findMany({ where: { boardID: id } })
     return card
   },
 

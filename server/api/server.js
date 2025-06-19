@@ -101,6 +101,22 @@ server.delete('/api/boards/:boardID', async (req, res, next) => {
 
 //CARD ROUTES
 
+server.get('/api/boards/:boardID/cards', async (req, res, next) => {
+  const search = req.params.boardID;
+  const id = parseInt(search);
+  console.log(search);
+  try {
+    const cards = await Card.findById(id)
+    if (cards.length) {
+      res.json(cards)
+    } else {
+      next({ status: 404, message: 'No cards found match the search criteria' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 // [POST] /api/boards/:boardID/cards
 server.post('/api/boards/:boardID/cards', async (req, res, next) => {
   const newCard = req.body

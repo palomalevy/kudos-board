@@ -15,21 +15,14 @@ const BoardList = ({ boards, handleDeleteBoard }) => {
               <img src={board.coverImage} alt={board.title} />
               <h2>{board.title}</h2>
               <p className="boardCategory">{board.category}</p>
-              <div className="cardButtons">
+              <div className="boardButtons">
                 <Link to={`/boards/${board.id}`} className="viewBoard">View Board</Link>
-                <button
-                  onClick={() => handleOnClick(board.id)}
-                  className="delete"
-                >
-                  Delete
-                </button>
+                <button onClick={() => handleOnClick(board.id)} className="delete">Delete</button>
               </div>
             </div>
           ))}
         </>
-      ) : (
-        <h2>No boards to display!</h2>
-      )}
+      ) : ( <h2>No boards to display!</h2> )}
     </div>
   );
 };

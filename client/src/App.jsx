@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Outlet } from 'react-router';
 import './App.css'
 import Header from './components/Header';
 import Search from './components/Search';
@@ -51,6 +52,7 @@ const App = () => {
         <p>© 2025 Kudoboard</p>
         <p>Paloma Levy</p>
       </footer>
+      <Outlet />
     </div>
   )  
 };
