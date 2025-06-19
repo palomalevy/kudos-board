@@ -1,11 +1,7 @@
-const express = require('express')
-const cors = require('cors')
-const Board = require('./boards')
-const helmet = require('helmet')
-
-const server = express()
-server.use(helmet())
-server.use(express.json())
-server.use(cors())
+const server = require('./api/server')
 
 const PORT = process.env.PORT || 3000
+
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`)
+})
