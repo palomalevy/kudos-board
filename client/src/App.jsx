@@ -9,7 +9,7 @@ const App = () => {
   const [boards, setBoards] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch(`http://localhost:3000/api/boards`)
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards`)
     const data = await response.json()
     if (Array.isArray(data)) { 
       setBoards([...data])
@@ -28,7 +28,7 @@ const App = () => {
   //     .catch(error => console.error(error));
   
   const handleDeleteBoard = async (boardID) => {
-    await fetch(`http://localhost:3000/api/boards/${boardID}`, {
+    await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`, {
       method: 'DELETE'
     })
     fetchData();
