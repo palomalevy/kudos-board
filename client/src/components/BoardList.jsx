@@ -12,11 +12,13 @@ const BoardList = ({ boards, handleDeleteBoard }) => {
         <>
           {boards.map((board) => (
             <div key={board.id} className="boardCard">
-              <img src={board.coverImage} alt={board.title} />
+              <img src={`https://picsum.photos/200?random=${board.id}`} alt={board.title} />
               <h2>{board.title}</h2>
               <p className="boardCategory">{board.category}</p>
               <div className="boardButtons">
-                <Link to={`/boards/${board.id}`} className="viewBoard">View Board</Link>
+                <button className="viewBoard">
+                  <Link to={`/boards/${board.id}`} className="viewBoard" as="button">View Board</Link>
+                </button>
                 <button onClick={() => handleOnClick(board.id)} className="delete">Delete</button>
               </div>
             </div>

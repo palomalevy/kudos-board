@@ -6,6 +6,9 @@ import Search from './components/Search';
 import CategoryButtons from './components/CategoryButtons';
 import BoardList from './components/BoardList';
 import CreateBoardForm from './components/CreateBoardForm';
+import Footer from './components/Footer';
+import Banner from './components/Banner';
+import './components/Popup.css'
 
 const App = () => { 
   const [boards, setBoards] = useState([]);
@@ -41,30 +44,16 @@ const App = () => {
       const response = await fetch(searchURL);
       const data = await response.json();
       const boards = data;
+      console.log("Inside app form.");
       setBoards(boards);
     };
 
   return (
     <div className="App">
         <Header/>
-      <div className='banner'>
-        <div className='search-bar'>
-          <Search fetchBoardQuery={fetchBoardQuery}/>
-        </div>
-        <div className='buttonBanner'>
-          <CategoryButtons boards={boards} setBoards={setBoards} fetchData={fetchData} fetchBoardQuery={fetchBoardQuery}/>
-        </div>
-        <div className='createNew'>
-          <CreateBoardForm setBoards={setBoards}/>
-        </div>
-      </div>
-      <div>
+        <Banner fetchBoardQuery={fetchBoardQuery} boards={boards} setBoards={setBoards} fetchData={fetchData} />
         <BoardList boards={boards} handleDeleteBoard={handleDeleteBoard}/>
-      </div>
-      <footer>
-        <p>© 2025 Kudoboard</p>
-        <p>Paloma Levy</p>
-      </footer>
+        <Footer />
       <Outlet />
     </div>
   )  

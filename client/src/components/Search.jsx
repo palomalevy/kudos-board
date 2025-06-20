@@ -12,7 +12,7 @@ const Search = ({fetchBoardQuery}) => {
         // call fetchBoardQuery and pass userInput into it
 
     useEffect (() => {
-        fetchBoardQuery(userInput, '');
+        if (!userInput) fetchBoardQuery(userInput, '');
     }, [userInput])
 
     const handleSubmit = () => {
@@ -21,6 +21,7 @@ const Search = ({fetchBoardQuery}) => {
     
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
+            handleSubmit()
             return;
         }
     };
@@ -32,7 +33,7 @@ const Search = ({fetchBoardQuery}) => {
     return (
         <div>
             <div className='buttons'>
-                <input  className='searchBar' type='text' onChange={handleTextChange} onKeyDown={handleKeyDown} placeholder='Search for movies...' value={userInput}/>
+                <input  className='searchBar' type='text' onChange={handleTextChange} onKeyDown={handleKeyDown} placeholder=' Search for boards...' value={userInput}/>
                 <button onClick={handleSubmit} className='Submit'>Submit</button>
                 <button onClick={handleReset} className='Clear'>Clear</button>
             </div>

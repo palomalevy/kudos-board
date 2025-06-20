@@ -3,13 +3,16 @@
 
 .App-header {
   display: flex;
+  background-color: #5A352A;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  color: #230903;
+  color: white;
   font-size: x-large;
   padding-top: 20px;
   font-family: "Chicle", serif;
+  box-shadow: 0px 5px 5px rgba(36, 36, 36, 0.5);
+  margin-bottom: 10px;
 }
 .kudoLogo {
   height: 50px;
@@ -19,10 +22,10 @@
   transition: filter 300ms;
 }
 .kudoLogo:hover {
-  filter: drop-shadow(0 0 2em #8B635C);
+  filter: drop-shadow(0 0 2em #faf5f4);
 }
 .kudoLogo.react:hover {
-  filter: drop-shadow(0 0 2em #FFDDD2);
+  filter: drop-shadow(0 0 1em #efe9e7);
 }
 
 .banner {
@@ -31,6 +34,7 @@
   align-items: center;
   flex-direction: column;
   gap: 10px;
+  padding-top:10px;
   padding-bottom: 20px;
 
   .search-bar {
@@ -46,6 +50,8 @@
     border: none;
     padding: 5px;
     font-family: "Chicle", serif;
+    box-shadow: 0px 5px 5px rgba(36, 36, 36, 0.5);
+    background-color: #a2d4b6;
   }
   .Submit {
     background-color: #093824;
@@ -60,6 +66,9 @@
     justify-content: center;
     gap: 10px;
   }
+  .categoryButton {
+    box-shadow: 0px 5px 5px rgba(36, 36, 36, 0.5);
+  }
 }
 
 .boardList {
@@ -70,6 +79,10 @@
   justify-content: center;
   padding-bottom: 40px;
 
+  .boardButtons {
+    display: flex;
+    gap: 20px;
+  }
   .boardCard {
     display: flex;
     flex-direction: column;
@@ -116,6 +129,29 @@ footer {
     align-items: center;
 }
 
+.boardTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .cardListTitle {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px;
+    background-color: #093824;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: xx-large;
+}
+}
+
+
+
+
+
 .cardList {
   display: flex;
   flex-direction: row;
@@ -137,4 +173,39 @@ footer {
     padding-bottom: 20px;
     line-height: 0;
   }
+
+  .gifImg {
+    width: 200px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 10px; 
+  }
+
+  .delete {
+    margin-left: 60px;
+  }
+}
+
+.createCardButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 46vw;
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+.viewBoard {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.createBoardButton {
+  background-color: #5A352A;
+  color: white;
+  font-size: large;
+  box-shadow: 0px 5px 5px rgba(36, 36, 36, 0.5);
 }

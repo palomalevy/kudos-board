@@ -1,27 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import CardList from './CardList';
+import CreateCardForm from './CreateCardForm'
 import Header from './Header';
+import Footer from './Footer';
 
 const BoardDetails = () => {
     const { boardID } = useParams();
     const [board, setBoard] = useState({});
     const [cards, setCards] = useState([]);
+    const [showModal, setShowModal] = useState(false)
+
+    const openPopup = () => {
+        setShowModal(true)
+    }
 
     const fetchBoardData = async () => {
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`);
-        const data = await response.json();
-        setBoard(data);
+        const responseBoard = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`);
+        const dataBoard = await responseBoard.json();
+        console.log("console data", dataBoard)
+        setBoard(dataBoard);
+        
+        const responseCards = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}/cards`);
+        const dataCard = await responseCards.json();
+        console.log("console data", dataCard)
+        setCards(dataCard);
     };
+
 
     useEffect(() => {
         fetchBoardData();
-        const fetchCardsData = async () => {
-            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}/cards`);
-            const data = await response.json();
-            setCards(data);
-        };
-        fetchCardsData();
     }, [boardID]);
 
     const handleDeleteCard = async (cardID) => {
@@ -34,8 +42,13 @@ const BoardDetails = () => {
     return (
         <div>
             <Header />
-            <h1>{board.title}</h1>
+            <div className="boardTitle">
+                <h2 className="cardListTitle">{board.title}</h2>
+            </div>
+            <button className="createCardButton" onClick={openPopup} >Create Card</button>
+            <CreateCardForm showModal={showModal} setShowModal={setShowModal} boardID={boardID} setCards={setCards} cards={cards} />
             <CardList cards={cards} handleDeleteCard={handleDeleteCard} boardID={boardID} />
+            <Footer />
         </div>
     )
 }

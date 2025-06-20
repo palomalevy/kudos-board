@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router';
+import Card from './Card';
 
 
 const CardList = ({ cards, handleDeleteCard, boardID }) => {
-  const handleOnClick = (cardID) => {
+  const handleDelete = (cardID) => {
     handleDeleteCard(cardID);
   };
 
@@ -12,16 +13,7 @@ const CardList = ({ cards, handleDeleteCard, boardID }) => {
       {cards?.length ? (
         <>
         {cards.map((card) => (
-          <div key={card.id} className="card">
-            <h2>{card.title}</h2>
-            <p>{card.description}</p>
-            <img src={card.gifurl} alt={card.title} />
-            <p>Author: {card.author}</p>
-            <p>Likes: {card.voteCount}</p>
-            <div className="cardButton">
-              <button onClick={() => handleOnClick(card.id)} className="delete">Delete</button>
-            </div>
-          </div>
+          <Card key={card.id} voteCount={card.voteCount} handleDelete={handleDelete} card={card} />
         ))}
         </>
       ) : (

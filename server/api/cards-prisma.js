@@ -14,6 +14,15 @@ module.exports = {
     return card
   },
 
+  async getCards(id) {
+    const cards = await prisma.card.findMany({
+        where: {
+            boardID : id
+        }
+    })
+    return cards
+  },
+
   async create(newBoard) {
     const created = await prisma.card.create({ data: newBoard })
     return created
@@ -26,6 +35,15 @@ module.exports = {
       where: { id : id },
     })
     return updated
+  },
+   
+  async updateVote(id) {
+    // UPDATE "Board" SET adopted = true WHERE id = 1;
+    const updatedVote = await prisma.card.update({
+      data: {voteCount: {increment: 1}},
+      where: { id : id },
+    })
+    return updatedVote
   },
 
   async delete(id) {

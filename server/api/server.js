@@ -114,8 +114,9 @@ server.get('/api/boards/:boardID/cards', async (req, res, next) => {
   const id = parseInt(search);
   console.log(search);
   try {
-    const cards = await Card.findById(id)
+    const cards = await Card.getCards(id)
     if (cards.length) {
+    console.log("got the cards", cards)
       res.json(cards)
     } else {
       next({ status: 404, message: 'No cards found match the search criteria' })
@@ -127,6 +128,7 @@ server.get('/api/boards/:boardID/cards', async (req, res, next) => {
 
 // [POST] /api/boards/:boardID/cards
 server.post('/api/boards/:boardID/cards', async (req, res, next) => {
+    
   const newCard = req.body
   try {
     const newCardValid = (
@@ -164,6 +166,25 @@ server.put('/api/boards/:boardID/cards/:cardID', async (req, res, next) => {
     )
     if (card && changesValid) {
       const updated = await Card.update(id, changes)
+      res.json(updated)
+    } else {
+      next({ status: 422, message: 'Invalid ID or invalid changes!' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+server.put('/api/cards/:cardID/voteCount', async (req, res, next) => {
+  const id = Number(req.params.cardID)
+  const changes = req.body
+  try {
+    // Make sure the ID is valid
+    const card = await Card.findById(id)
+    // Validate that the changes include at least one valid change
+
+    if (card) {
+      const updated = await Card.updateVote(id, changes)
       res.json(updated)
     } else {
       next({ status: 422, message: 'Invalid ID or invalid changes!' })
