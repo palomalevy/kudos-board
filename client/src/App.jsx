@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Search from './components/Search';
 import CategoryButtons from './components/CategoryButtons';
 import BoardList from './components/BoardList';
+import CreateBoardForm from './components/CreateBoardForm';
 
 const App = () => { 
   const [boards, setBoards] = useState([]);
@@ -22,27 +23,39 @@ const App = () => {
         fetchData()
     }, []);
 
-  // const boardID = 1; // Replace with the actual board ID
-  //   fetch(`http://localhost:3000/api/boards/${boardID}`)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  //     .catch(error => console.error(error));
-  
+
+  // State that tracks active search content
+  // State that tracks active filter option
+  // Pass both of these down with their setters to Search an Category Buttons WITH fetchBoardQuery function
+  // Any change either of them makes in the setter is tracked in the other because they share the same state
+
   const handleDeleteBoard = async (boardID) => {
     await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`, {
       method: 'DELETE'
     })
     fetchData();
   }
+
+  const fetchBoardQuery = async (search = '', category) => {
+      const searchURL = `${import.meta.env.VITE_BASE_URL}/api/boards?query=${search}&category=${category}`;
+      const response = await fetch(searchURL);
+      const data = await response.json();
+      const boards = data;
+      setBoards(boards);
+    };
+
   return (
     <div className="App">
         <Header/>
       <div className='banner'>
         <div className='search-bar'>
-          <Search/>
+          <Search fetchBoardQuery={fetchBoardQuery}/>
         </div>
         <div className='buttonBanner'>
-          <CategoryButtons/>
+          <CategoryButtons boards={boards} setBoards={setBoards} fetchData={fetchData} fetchBoardQuery={fetchBoardQuery}/>
+        </div>
+        <div className='createNew'>
+          <CreateBoardForm setBoards={setBoards}/>
         </div>
       </div>
       <div>

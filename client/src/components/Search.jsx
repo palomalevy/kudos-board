@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react'
 
-const Search = () => {
+const Search = ({fetchBoardQuery}) => {
     const [userInput, setUserInput] = useState('')
 
     const handleTextChange = (event) => {
-        const {value} = event.target
-        setUserInput(value)
+        const { value } = event.target
+        setUserInput(value);
+    }
+
+    // useEffect that tracks userInput
+        // call fetchBoardQuery and pass userInput into it
+
+    useEffect (() => {
+        fetchBoardQuery(userInput, '');
+    }, [userInput])
+
+    const handleSubmit = () => {
+        fetchBoardQuery(userInput, '');
     }
     
     const handleKeyDown = (event) => {
@@ -16,14 +27,13 @@ const Search = () => {
 
     const handleReset = () => {
         setUserInput('');
-        onClearing();
     }
 
     return (
         <div>
             <div className='buttons'>
                 <input  className='searchBar' type='text' onChange={handleTextChange} onKeyDown={handleKeyDown} placeholder='Search for movies...' value={userInput}/>
-                <button className='Submit'>Submit</button>
+                <button onClick={handleSubmit} className='Submit'>Submit</button>
                 <button onClick={handleReset} className='Clear'>Clear</button>
             </div>
         </div>

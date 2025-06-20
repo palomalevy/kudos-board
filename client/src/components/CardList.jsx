@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router';
 
+
 const CardList = ({ cards, handleDeleteCard, boardID }) => {
   const handleOnClick = (cardID) => {
     handleDeleteCard(cardID);
   };
 
   return (
-    <div className="cardList">
+      <div className="cardList">
       {cards?.length ? (
         <>
         {cards.map((card) => (

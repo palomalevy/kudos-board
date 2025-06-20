@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import CardList from './CardList';
+import Header from './Header';
 
 const BoardDetails = () => {
     const { boardID } = useParams();
     const [board, setBoard] = useState({});
     const [cards, setCards] = useState([]);
-    
+
     const fetchBoardData = async () => {
         const response = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`);
         const data = await response.json();
@@ -32,6 +33,7 @@ const BoardDetails = () => {
 
     return (
         <div>
+            <Header />
             <h1>{board.title}</h1>
             <CardList cards={cards} handleDeleteCard={handleDeleteCard} boardID={boardID} />
         </div>

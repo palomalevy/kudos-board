@@ -26,9 +26,17 @@ server.get('/api/boards/:boardID', async (req, res, next) => {
 
 // [GET] /api/boards
 server.get('/api/boards', async (req, res, next) => {
-  const search = req.query
+  const { query, category } = req.query
+  
+  let filter = {}
+
   try {
-    const boards = await Board.find(search)
+    // If there is a specified query, add a property to the filter to search with it
+    query && ( filter.title =  { contains: query, mode: 'insensitive' } )
+    // If there is a specified query, add a property to track this
+    category && ( filter.category = category )
+
+    const boards = await Board.find(filter);
     if (boards.length) {
       res.json(boards)
     } else {
