@@ -45,7 +45,9 @@ const BoardDetails = () => {
             <div className="boardTitle">
                 <h2 className="cardListTitle">{board.title}</h2>
             </div>
-            <button className="createCardButton" onClick={openPopup} >Create Card</button>
+            <div className="createCard">
+                <button className="createCardButton" onClick={openPopup} >Create Card</button>
+            </div>
             <CreateCardForm showModal={showModal} setShowModal={setShowModal} boardID={boardID} setCards={setCards} cards={cards} />
             <CardList cards={cards} handleDeleteCard={handleDeleteCard} boardID={boardID} />
             <Footer />
