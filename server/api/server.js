@@ -112,11 +112,9 @@ server.delete('/api/boards/:boardID', async (req, res, next) => {
 server.get('/api/boards/:boardID/cards', async (req, res, next) => {
   const search = req.params.boardID;
   const id = parseInt(search);
-  console.log(search);
   try {
     const cards = await Card.getCards(id)
     if (cards.length) {
-    console.log("got the cards", cards)
       res.json(cards)
     } else {
       next({ status: 404, message: 'No cards found match the search criteria' })
@@ -218,7 +216,6 @@ server.use('/*', (req, res, next) => {
 // Error handling middleware
 server.use((err, req, res, next) => {
   const { message, status = 500 } = err
-  console.log(message)
   res.status(status).json({ message }) // Unsafe in prod
 })
 

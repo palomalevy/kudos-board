@@ -44,7 +44,6 @@ const App = () => {
       const response = await fetch(searchURL);
       const data = await response.json();
       const boards = data;
-      console.log("Inside app form.");
       setBoards(boards);
     };
 

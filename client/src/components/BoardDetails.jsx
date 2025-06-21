@@ -22,12 +22,10 @@ const BoardDetails = () => {
     const fetchBoardData = async () => {
         const responseBoard = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`);
         const dataBoard = await responseBoard.json();
-        console.log("console data", dataBoard)
         setBoard(dataBoard);
         
         const responseCards = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}/cards`);
         const dataCard = await responseCards.json();
-        console.log("console data", dataCard)
         setCards(dataCard);
     };
 

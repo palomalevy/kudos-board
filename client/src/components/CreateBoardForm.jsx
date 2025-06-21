@@ -16,7 +16,7 @@ const CreateBoardForm = ({ setBoards, showModal, setShowModal }) => {
       body: JSON.stringify(createNew),
     })
       .then((response) => response.json())
-      .then((data) => {console.log("Inside create board form."); console.log(data); setBoards(prev => [...prev, data])})
+      .then((data) => {console.log(data); setBoards(prev => [...prev, data])})
       .catch((error) => console.error(error));
     };
 
@@ -40,12 +40,6 @@ const CreateBoardForm = ({ setBoards, showModal, setShowModal }) => {
                         <option value="Inspiration">Inspiration</option>
                         <option value="Thank You">Thank You</option>
                     </select>
-                </label>
-                {/* <label>
-                    Cover Image: <input type="text" name="coverImage" value={createNew.coverImage} onChange={handleChange} />
-                </label> */}
-                <label>
-                    Author <input type="text" name="author" placeholder="(Optional)..." value={createNew.author} onChange={handleChange} />
                 </label>
                 <button className="popupButton" type="submit">Create Board</button>
             </form>

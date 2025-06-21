@@ -11,6 +11,16 @@ const CreateCardForm = ({
   const [gifs, setGifs] = useState([]);
   const [selectedGIF, setSelectedGIF] = useState("");
   const [userInput, setUserInput] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+//   const []
+    // create handle methods for all parts
+
+  // handle gif search only
+  const handleTitleChange = (event) => {
+    const value = event.target.value;
+    setTitle(value);
+  }
 
   const handleTextChange = (event) => {
     const { value } = event.target;
@@ -29,7 +39,6 @@ const CreateCardForm = ({
       }&q=${userInput}&limit=6`
     );
     const searchResults = await res.json();
-    console.log(searchResults);
     setGifs(searchResults.data);
   };
 
@@ -57,11 +66,14 @@ const CreateCardForm = ({
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("prevCards:", cards);
         setCards((prevCards) => {
           const safePrev = Array.isArray(prevCards) ? prevCards : [];
           return [...safePrev, data];
         });
+        setGifs([]);
+        setTitle("");
+        setSelectedGIF("");
+        setUserInput("");
         closePopup();
       })
       .catch((error) => console.error(error));
@@ -75,10 +87,10 @@ const CreateCardForm = ({
         <form onSubmit={handleSubmit}>
           <h2 className="header">Create Kudos Card !!</h2>
           <label>
-            Title: <input type="text" name="title" />
+            Title: <input type="text" name="title" value={title} onChange={handleTitleChange}/>
           </label>
           <label>
-            Description: <textarea name="description" />
+            Description: <textarea name="description"/>
           </label>
           <label>
             Search GIFS:{" "}
