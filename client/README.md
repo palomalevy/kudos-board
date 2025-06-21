@@ -137,28 +137,32 @@ Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-b
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`https://www.loom.com/share/fecd7cc301d74b36a843a2b7d292d870?sid=bb10e671-5e93-42a3-a320-9d9510fd6ee9`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+- yes, the topics we learned with the labs helped a lot when the time came to begin the project. For the most part, the starting a project lab and the react router lab. I felt unprepared to complete the linking of the front and backends
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+- I would have completed stretch features.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+- I learned a lot but it took me a while to get the hang of it.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- N/A
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+- Pedro R. (Cohort 3)
+- Zen (Cohort 2)
+- Carlos Escobar
+- Gabe (Tech Fellow)
+- Greg (Tech Fellow)
+- Danny (Tech Fellow)
+- Elikem (Tech Fellow)
