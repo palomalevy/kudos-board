@@ -15,6 +15,10 @@ const BoardDetails = () => {
         setShowModal(true)
     }
 
+    const closePopup = () => {
+        setShowModal(false)
+    }
+
     const fetchBoardData = async () => {
         const responseBoard = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardID}`);
         const dataBoard = await responseBoard.json();
@@ -48,7 +52,7 @@ const BoardDetails = () => {
             <div className="createCard">
                 <button className="createCardButton" onClick={openPopup} >Create Card</button>
             </div>
-            <CreateCardForm showModal={showModal} setShowModal={setShowModal} boardID={boardID} setCards={setCards} cards={cards} />
+            <CreateCardForm closePopup={closePopup} showModal={showModal} setShowModal={setShowModal} boardID={boardID} setCards={setCards} cards={cards} />
             <CardList cards={cards} handleDeleteCard={handleDeleteCard} boardID={boardID} />
             <Footer />
         </div>
