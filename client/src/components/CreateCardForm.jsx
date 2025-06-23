@@ -13,10 +13,7 @@ const CreateCardForm = ({
   const [userInput, setUserInput] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-//   const []
-    // create handle methods for all parts
 
-  // handle gif search only
   const handleTitleChange = (event) => {
     const value = event.target.value;
     setTitle(value);
